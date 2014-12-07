@@ -13,16 +13,17 @@
 <% var sorted_posts = site.posts.sort('date', -1); %>
 <% site.categories.sort('name').each(function(item){ %>
   <section class="archives-wrap">
-    <div id="<%= item.name %>" class="archive-year-wrap">
-	  <a class="archive-title"><%= item.name %></a>
-	</div>
-	<div class="archives">
-	  <% sorted_posts.forEach(function(post, i){ %>
-	    <% if (post.categories._index.indexOf(item._id) > -1){ %>
-		  <%- partial('_partial/archive-post', {post: post, even: i % 2 == 0, index: true}) %>
-		<% } %>
-	  <% }); %>
-	</div>
+    <div id="<%= item.name %>" class="archive-title-wrap">
+      <a><%= item.name %></a>
+    </div>
+    <div class="archives">
+	  <div class="archive-article-wrap" style="height: 22px; border-bottom: 0"></div><% sorted_posts.forEach(function(post, i){ %><% if (post.categories._index.indexOf(item._id) > -1){ %>
+	    <div class="archive-article-wrap">
+          <h1 itemprop="name">
+            <a class="archive-article-title" href="<%- url_for(post.path) %>"><%= post.title %></a>
+          </h1>
+        </div>
+<% } %><% }); %></div>
   </section>
 <% }); %>
 

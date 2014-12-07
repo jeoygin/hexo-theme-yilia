@@ -18,13 +18,42 @@
     font-weight: bold;
     padding-left: 48px;
   }
+  .archive-title-wrap{
+    line-height: 20px;
+    width: 500px;
+    position: absolute;
+    top: 8px;
+    padding-top: 8px;
+    font-size: 1.8em;
+  }
+  .archive-title-wrap a{
+    display: block;
+    font-size: 18px;
+    color: #B94A48;
+    font-weight: bold;
+    padding-left: 48px;
+  }
 }
 
 .archives {
   position:relative;
   .archive-article {
-    margin-left:200px;
+    margin-left:150px;
     padding:20px 0;
+    border-bottom: 1px solid #eee;
+    border-top: 1px solid #fff;
+    position: relative;
+    &:first-child{
+      border-top: none;
+    }
+    &:last-child{
+      border-bottom: none;
+    }
+  }
+
+  .archive-article-wrap {
+    margin-left:100px;
+    padding: 8px 0 12px 0;
     border-bottom: 1px solid #eee;
     border-top: 1px solid #fff;
     position: relative;
