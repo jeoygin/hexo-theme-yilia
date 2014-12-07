@@ -14,9 +14,15 @@
       title += ': ' + page.year;
     }
   } else if (is_category()){
-    title = 'Category: ' + page.category;
+    title = 'Categories';
+    if (page.category) {
+      title += ': ' + page.category;
+    }
   } else if (is_tag()){
-    title = 'Tag: ' + page.tag;
+    title = 'Tags';
+    if (page.tag) {
+      title += ': ' + page.tag;
+    }
   }
   %>
   <title><% if (title){ %><%= title %> | <% } %><%= config.title %></title>
@@ -30,4 +36,8 @@
   <% } %>
   <%- css('css/style') %>
   <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+
+  <!-- analytics -->
+  <%- partial('post/google_analytics') %>
+  <%- partial('post/baidu_tongji') %>
 </head>
