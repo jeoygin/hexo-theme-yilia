@@ -17,7 +17,7 @@
       <a><%= item.name %></a>
     </div>
     <div class="archives">
-	  <div class="archive-article-wrap" style="height: 22px; border-bottom: 0"></div><% sorted_posts.forEach(function(post, i){ %><% if (post.categories._index.indexOf(item._id) > -1){ %>
+	  <div class="archive-article-wrap" style="height: 22px; border-bottom: 0"></div><% sorted_posts.forEach(function(post, i){ %><% if (post.categories && post.categories.data.filter(function(e, i) { return e._id === item._id }).length > 0 ){ %>
 	    <div class="archive-article-wrap">
           <h1 itemprop="name">
             <a class="archive-article-title" href="<%- url_for(post.path) %>"><%= post.title %></a>
