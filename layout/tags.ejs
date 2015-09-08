@@ -1,0 +1,30 @@
+<section class="archives-wrap">
+  <% if (site.tags.length){ %>
+    <div id="header" class="tagbox">
+      <div class="widget tagcloud">
+        <% site.tags.sort('name').each(function(item){ %>
+          <a href="#<%= item.name %>" style="font-size: 11.00px; "><%= item.name %><span><%= item.posts.length %></span></a>
+        <% }); %>
+      </div>
+    </div>
+  <% } %>
+</section>
+
+<% var sorted_posts = site.posts.sort('date', -1); %>
+<% site.tags.sort('name').each(function(item){ %>
+  <section class="archives-wrap">
+    <div id="<%= item.name %>" class="archive-title-wrap">
+      <a><%= item.name %></a>
+    </div>
+    <div class="archives">
+	  <div class="archive-article-wrap" style="height: 22px; border-bottom: 0"></div><% sorted_posts.forEach(function(post, i){ %><% if (post.tags && post.tags.data.filter(function(e, i) { return e._id === item._id }).length > 0 ){ %>
+	    <div class="archive-article-wrap">
+          <h1 itemprop="name">
+            <a class="archive-article-title" href="<%- url_for(post.path) %>"><%= post.title %></a>
+          </h1>
+        </div>
+<% } %><% }); %></div>
+  </section>
+<% }); %>
+
+<footer class="article-footer" />
